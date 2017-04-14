@@ -1,0 +1,60 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registration for new student</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onStudentRegister(f)">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="Name"
+                   name="name"
+                   ngModel
+                   required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Username(ID)</ion-label>
+        <ion-input type="Username(ID)"
+                   name="username"
+                   ngModel
+                   required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password"
+                   name="password"
+                   ngModel
+                   required
+                   [minlength]="6"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password"
+                   name="passwordConfirmation"
+                   ngModel
+                   required></ion-input>
+      </ion-item>
+
+
+      <button
+        ion-button
+        type="submit"
+        block
+      [disabled]="!f.valid"> Register </button>
+    </ion-list>
+  </form>
+
+
+
+
+</ion-content>

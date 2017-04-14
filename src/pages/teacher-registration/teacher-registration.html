@@ -1,0 +1,77 @@
+<!--
+  Generated template for the TeacherRegistration page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Teacher Registration</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <Form>
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text"
+                   name="teachername"
+                   ngModel></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label floating>E-mail</ion-label>
+        <ion-input type="text"
+                   name="teacheremail"
+                   ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Select Course</ion-label>
+        <ion-select [(ngModel)]=" selectcourse" multiple="true" cancelText="No" oK Text="Okay!">
+          <ion-option value="compiler" selected="true">Principles of Compiler</ion-option>
+          <ion-option value="data structures" selected="true">Data Structures</ion-option>
+          <ion-option value="java" selected="true">Java</ion-option>
+          <ion-option value="computer networks" selected="true">Computer Networks</ion-option>
+          <ion-option value="embedded systems" selected="true">Embedded Systems</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password"
+                   name="teacherpassword"
+                   ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password"
+                   name="tecaherconfirmpassword"
+                   ngModel></ion-input>
+      </ion-item>
+
+
+
+      <button
+        ion-button
+        type="submit"
+        block> Register </button>
+    </ion-list>
+  </Form>
+
+
+
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,43 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> Teacher Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form #f="ngForm" (ngSubmit)="onAddTeacher(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>E-mail</ion-label>
+        <ion-input type="text"
+                   name="teacheremail"
+                   ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password"
+                   name="teacherpassword"
+                   ngModel></ion-input>
+      </ion-item>
+
+      <button
+        ion-button (click)="onGoToMain()"
+        type="submit"
+        block> Login </button>
+
+      <button
+        ion-button (click)="onGoToTeacherRegistration()"
+        type="button"
+        block
+        clear> Register Here</button>
+
+    </ion-list>
+  </form>
+
+</ion-content>

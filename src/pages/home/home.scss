@@ -1,3 +1,32 @@
 page-home {
+  .top{
+    height: 30%;
+    width: 100%;
+    background: #c93595;
+    h2{
+      color: #fff;
+      position: fixed;
+      font-weight: bolder;
+      top: 20%;
+      font-size: 2em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-left: 10px;
+    }
+  }
 
+  .caption{
+    p{
+      font-size: 30px;
+      font-weight: 100;
+      margin-top: 30%;
+    }
+  }
+
+  .main{
+    margin-top: 10%;
+    button{
+      border-radius: 0 !important;
+    }
+  }
 }

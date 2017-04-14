@@ -1,17 +1,23 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content>
+  <div class="top">
+    <h2 ion-text text-center="">Welcome to studApp </h2>
+  </div>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div class="caption">
+    <p ion-text text-center>Welcome to Join Our Master Class</p>
+  </div>
+
+  <div class="main" padding>
+    <ion-row>
+      <ion-col col-5>
+        <button ion-button color="dark" block (click)="onGoToStudentLogin()"> Student </button>
+      </ion-col>
+      <ion-col col-2>
+        <p ion-text text-center>OR</p>
+      </ion-col>
+      <ion-col col-5>
+        <button ion-button color="dark" block (click)="onGoToTeacherLogin()"> Teacher </button>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

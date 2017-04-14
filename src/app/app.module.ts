@@ -10,6 +10,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {StudentLogin} from "../pages/student-login/student-login";
+//import {WelcomePage} from "../pages/welcome-page/welcome-page";
+import {TeacherLogin} from "../pages/teacher-login/teacher-login";
+import {StudentRegistration} from "../pages/student-registration/student-registration";
+import {TeacherRegistration} from "../pages/teacher-registration/teacher-registration";
+import {DataService} from "../services/data";
+// import { Auth } from "../providers/auth";
+import {Main} from "../pages/main/main";
+import {Nfc} from "../pages/nfc/nfc";
 
 @NgModule({
   declarations: [
@@ -17,7 +26,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    StudentLogin,
+    TeacherLogin,
+    StudentRegistration,
+    TeacherRegistration,
+    Main,
+    Nfc
   ],
   imports: [
     BrowserModule,
@@ -29,12 +44,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    StudentLogin,
+    TeacherLogin,
+    StudentRegistration,
+    TeacherRegistration,
+    Main,
+    Nfc
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataService
   ]
 })
 export class AppModule {}
