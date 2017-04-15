@@ -2,18 +2,20 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {HomePage} from '../pages/home/home';
+//import {HomePage} from '../pages/home/home';
+import {StudentLogin} from "../pages/student-login/student-login";
+import {Http} from "@angular/http";
 //import { TabsPage } from '../pages/tabs/tabs';
-//import { StudentLogin } from '../pages/student-login';
 //import { Auth } from '../providers/auth';
 //import { Main } from '../pages/main/main';
 //import {main} from "@angular/compiler-cli/src/main";
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [Http]
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = StudentLogin;
 
  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

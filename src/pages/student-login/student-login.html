@@ -13,28 +13,16 @@
   <ion-list>
     <ion-item>
       <ion-label floating>Username(ID)</ion-label>
-     <ion-input type="text"
-                name="username"
-                ngModel></ion-input>
+     <ion-input [(ngModel)] = "usercreds.name" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password"
-                 name="password"
-                 ngModel></ion-input>
+      <ion-input [(ngModel)] = "usercreds.password" type="password"></ion-input>
     </ion-item>
 
-    <button
-      ion-button
-      type="submit"
-      block> Login </button>
-
-    <button
-    ion-button (click)="onGoToStudentRegistration()"
-    type="button"
-    block
-    clear> Register Here</button>
+    <button ion-button (click)="onStudentLogin(usercreds)" type="submit" block>Login </button>
+    <button ion-button (click)="onGoToStudentRegistration()" type="button" block clear> Register Here</button>
   </ion-list>
 </form>
 
