@@ -1,24 +1,18 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the Nfc page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
+import {Ndef, NFC} from "@ionic-native/nfc";
+import { Platform} from 'ionic-angular'
 @Component({
   selector: 'page-nfc',
   templateUrl: 'nfc.html',
 })
 export class Nfc {
+  constructor(private nfc: NFC, private ndef: Ndef, private platform: Platform) {
+    platform.ready().then(() => {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+      // let message = this.ndef.textRecord('hello world');
+      //  this.nfc.share([message]).then(onSuccess).catch(error);
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Nfc');
-  }
 
 }
