@@ -32,6 +32,19 @@ export class Auth {
             })
         })
     }
+
+    //for Student registration
+  signUpStudent (email: string, password: string, studentid: string): firebase.Promise<any> {
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then( newUser => {
+        firebase.database().ref('/Student').child(newUser.uid)
+          .set({ email: email,
+            studentid: studentid
+          })
+      })
+  }
+
+
     resetPassword(email: string): firebase.Promise<void> {
       return firebase.auth().sendPasswordResetEmail(email);
     }

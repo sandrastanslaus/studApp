@@ -1,27 +1,62 @@
 import { Component } from '@angular/core';
-//import {NgForm} from "@angular/forms";
-import {AlertController, LoadingController, NavController, App} from "ionic-angular";
+import {AlertController, LoadingController, NavController, App, Loading} from "ionic-angular";
 import {StudentRegistration} from "../student-registration/student-registration";
 import {Auth} from "../../providers/auth";
-import {HomePage} from "../home/home";
+//import {Attendance} from "../attendance/attendance";
 import {Nfc} from "../nfc/nfc";
+//import {HomePage} from "../home/home";
+//import {Nfc} from "../nfc/nfc";
 
 
 
 @Component({
   selector: 'page-student-login',
   templateUrl: 'student-login.html',
- // providers: [ HttpModule ]
+  providers:[Auth]
  })
 export class StudentLogin {
-
+  loginData = {
+    email: '',
+    password: ''
+  }
+  loading : Loading;
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,
-              private alert: AlertController  , public app: App) {
-
+              private alert: AlertController  , private userservice: Auth) {
   }
+  login () {
 
-  onGoToStudentRegistration(){
-      this.navCtrl.push(StudentRegistration)
-    }
+    this.userservice.loginUser(this.loginData.email, this.loginData.password)
+      .then( authData => {
+        let loading = this.loadingCtrl.create({
+          dismissOnPageChange: true,
+          content: 'Logging you in'
+        });
+        loading.dismiss().then(
+
+          () => {
+            this.navCtrl.setRoot(Nfc);
+          });
+      }, error => {
+        let loading = this.loadingCtrl.create({
+          dismissOnPageChange: true,
+          content: 'Logging you in'
+        })
+        loading.dismiss().then( () => {
+          let alert = this.alert.create({
+            message: error.message,
+            buttons: [
+              {
+                text: 'OK',
+                role: 'cancel'
+              }
+            ]
+          });
+          alert.present()
+        });
+      });
+  }
+  signup() {
+    this.navCtrl.push(StudentRegistration, { email: this.loginData.email });
+  }
 }

@@ -3,7 +3,9 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 //import {HomePage} from "../pages/home/home";
-import {TeacherRegistration} from "../pages/teacher-registration/teacher-registration";
+//import {TeacherRegistration} from "../pages/teacher-registration/teacher-registration";
+import {StudentRegistration} from "../pages/student-registration/student-registration";
+import {StudentLogin} from "../pages/student-login/student-login";
 
 
 @Component({
@@ -11,7 +13,7 @@ import {TeacherRegistration} from "../pages/teacher-registration/teacher-registr
 
 })
 export class MyApp {
-  rootPage:any = TeacherRegistration;
+  rootPage:any = StudentLogin;
 
 
  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {

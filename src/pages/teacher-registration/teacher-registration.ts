@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams, LoadingController, AlertController, Loading} from 'ionic-angular';
-
-import { AngularFireAuth } from 'angularfire2/auth';
+//import { AngularFireAuth } from 'angularfire2/auth';
 import {Auth} from "../../providers/auth";
 import {Main} from "../main/main";
 
