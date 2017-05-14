@@ -1,28 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+
 import 'rxjs/add/operator/map';
 import {NavController} from "ionic-angular";
-//import {DataService} from "../services/data";
-//import {NgForm} from "@angular/forms";
+import * as firebase from 'firebase';
+
 
 @Injectable()
 export class Auth {
-  static get parameters() {
-    //public
-    return [[Http]]
-    // getsession: any;
-  }
-    constructor(public http: Http, private navCtrl: NavController)
-    {
 
-    }
-    postLogin(data)
+  //private data: any;
+  public fireAuth: any;
+  public userProfile: any;
+    constructor( private navCtrl: NavController)
     {
-      let headers = new Headers();
-      headers.append('Content-type', 'application/x-www-form-urlencoded');
-      let link = 'http://localhost:3306/webapp/login.php'
-      return this.http.post(link, data)
-        .map(res => res.json())
+      this.fireAuth = firebase.auth();
+      this.userProfile = firebase.database().ref('Teacher');
+    }
+
+    loginUser (email: string, password: string): firebase.Promise<any> {
+      return firebase.auth().signInWithEmailAndPassword(email, password);
+    }
+
+
+    signUpUser (email: string, password: string, course: string, name: string): firebase.Promise<any> {
+      return firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then( newUser => {
+          firebase.database().ref('/Teacher').child(newUser.uid)
+            .set({ email: email,
+                    name: name,
+                    course: course
+            })
+        })
+    }
+    resetPassword(email: string): firebase.Promise<void> {
+      return firebase.auth().sendPasswordResetEmail(email);
+    }
+
+    logoutUser(): firebase.Promise<void> {
+      return firebase.auth().signOut();
     }
 
   }

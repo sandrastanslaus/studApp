@@ -1,0 +1,39 @@
+<!--
+  Generated template for the Attendance page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>attendance</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<form>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Student(ID)</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Date/Time</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <div padding>
+      <button ion-button type="button" block >Save</button>
+    </div>
+
+    <div padding>
+      <button ion-button (click)= "showAttendance()" type="button" block clear >Click to show today's attendance</button>
+    </div>
+
+  </ion-list>
+</form>
+</ion-content>

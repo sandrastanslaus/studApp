@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import {HttpModule} from "@angular/http";
 import {IonicStorageModule} from "@ionic/storage";
-
+import {  AngularFireModule } from 'angularfire2';
 //pages and services
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -22,8 +22,19 @@ import { Auth } from "../providers/auth";
 import {Main} from "../pages/main/main";
 import {Nfc} from "../pages/nfc/nfc";
 import {FormsModule} from "@angular/forms";
+import {Attendance} from "../pages/attendance/attendance";
+import {TodayAttendance} from "../pages/today-attendance/today-attendance";
+import * as firebase from 'firebase';
 
-
+export const firebaseConfig = {
+  apiKey: "AIzaSyDY6UjE-Id-DRuoB_RrgySYqeMtR4TnrC8",
+  authDomain: "studapp-c9ec1.firebaseapp.com",
+  databaseURL: "https://studapp-c9ec1.firebaseio.com",
+  projectId: "studapp-c9ec1",
+  storageBucket: "studapp-c9ec1.appspot.com",
+  messagingSenderId: "87489312056"
+};
+  firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     MyApp,
@@ -36,14 +47,17 @@ import {FormsModule} from "@angular/forms";
     StudentRegistration,
     TeacherRegistration,
     Main,
-    Nfc
+    Nfc,
+    Attendance,
+    TodayAttendance
   ],
   imports: [
     HttpModule,
     BrowserModule,
     FormsModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,7 +71,9 @@ import {FormsModule} from "@angular/forms";
     StudentRegistration,
     TeacherRegistration,
     Main,
-    Nfc
+    Nfc,
+    Attendance,
+    TodayAttendance
 
   ],
   providers: [

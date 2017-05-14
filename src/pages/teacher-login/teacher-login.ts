@@ -1,28 +1,59 @@
 import { Component } from '@angular/core';
-import {NgForm} from "@angular/forms";
-import {NavController} from "ionic-angular";
+import {NavController, LoadingController, AlertController} from "ionic-angular";
 import {TeacherRegistration} from "../teacher-registration/teacher-registration";
+//import {Main} from "../main/main";
+import {Auth} from "../../providers/auth";
 import {Main} from "../main/main";
+
 
 @Component({
   selector: 'page-teacher-login',
   templateUrl: 'teacher-login.html',
+  providers:[Auth]
 })
 export class TeacherLogin {
-
-  constructor(public navCtrl: NavController) {
+loginData = {
+  email: '',
+  password: ''
+}
+  constructor(public navCtrl: NavController, private loadingCtrl: LoadingController, private userservice: Auth, private alertCtrl: AlertController) {
 
   }
-  onGoToMain(){
-    this.navCtrl.push(Main)
-  }
-  onGoToTeacherRegistration(){
-    this.navCtrl.push(TeacherRegistration)
-  }
+login () {
 
+    this.userservice.loginUser(this.loginData.email, this.loginData.password)
+      .then( authData => {
+        let loading = this.loadingCtrl.create({
+          dismissOnPageChange: true,
+          content: 'Logging you in'
+        })
+        loading.dismiss().then(
 
-  onAddTeacher(form: NgForm){
-    console.log(form);
-  }
+          () => {
+            this.navCtrl.setRoot(Main);
+          });
+      }, error => {
+        let loading = this.loadingCtrl.create({
+          dismissOnPageChange: true,
+          content: 'Logging you in'
+        })
+        loading.dismiss().then( () => {
+          let alert = this.alertCtrl.create({
+            message: error.message,
+            buttons: [
+              {
+                text: 'OK',
+                role: 'cancel'
+              }
+            ]
+          });
+          alert.present()
+        });
+      });
+}
+
+signup() {
+  this.navCtrl.push(TeacherRegistration, { email: this.loginData.email });
+}
 
 }

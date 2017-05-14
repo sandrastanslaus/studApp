@@ -10,19 +10,17 @@
     <ion-title>Teacher Registration</ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header>t66
 
 
 <ion-content padding>
-
-  <Form>
     <ion-list>
 
       <ion-item>
         <ion-label floating>Name</ion-label>
         <ion-input type="text"
                    name="teachername"
-                   ngModel></ion-input>
+                   [(ngModel)]="name"></ion-input>
       </ion-item>
 
 
@@ -30,12 +28,12 @@
         <ion-label floating>E-mail</ion-label>
         <ion-input type="text"
                    name="teacheremail"
-                   ngModel></ion-input>
+                   [(ngModel)]="signupData.email"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Select Course</ion-label>
-        <ion-select [(ngModel)]=" selectcourse" multiple="true" cancelText="No" oK Text="Okay!">
+        <ion-select [(ngModel)]="signupData.course" multiple="true" cancelText="No" oK Text="Okay!">
           <ion-option value="compiler" selected="true">Principles of Compiler</ion-option>
           <ion-option value="data structures" selected="true">Data Structures</ion-option>
           <ion-option value="java" selected="true">Java</ion-option>
@@ -48,30 +46,19 @@
         <ion-label floating>Password</ion-label>
         <ion-input type="password"
                    name="teacherpassword"
-                   ngModel></ion-input>
+                   [(ngModel)]="signupData.password"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Confirm Password</ion-label>
         <ion-input type="password"
                    name="tecaherconfirmpassword"
-                   ngModel></ion-input>
+                   [(ngModel)]="signupData.ConPassword"></ion-input>
       </ion-item>
 
-
-
-      <button
-        ion-button
-        type="submit"
-        block> Register </button>
     </ion-list>
-  </Form>
-
-
-
-
-
-
-
-
+  <button
+    ion-button (click)="signup()"
+    type="submit"
+    block> Register </button>
 </ion-content>
