@@ -1,25 +1,32 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import {NavController, NavParams, LoadingController, AlertController, Loading} from 'ionic-angular';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import {Auth} from "../../providers/auth";
+import {Main} from "../main/main";
 
 
 
 @Component({
   selector: 'page-teacher-registration',
   templateUrl: 'teacher-registration.html',
-  providers:[AngularFireAuth]
+  providers:[Auth]
 })
 export class TeacherRegistration {
   signupData = {
     email: '',
     password: '',
     course: '',
-    ConPassword: ''
+    ConPassword: '',
+    name: ''
   }
 
+  loading: Loading;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
+              public authProvider: Auth,
+              public loadingCtrl: LoadingController) {
+
     this.signupData.email = this.navParams.get('email');
   }
 
@@ -33,28 +40,26 @@ export class TeacherRegistration {
         alert.present();
         return;
     }
-    //firebase Signup code
-
+    //firebase Signup
+    this.authProvider.signUpUser(this.signupData.email, this.signupData.password, this.signupData.course, this.signupData.name)
+      .then(() => {
+          this.loading.dismiss().then( () => {
+            this.navCtrl.setRoot(Main);
+          });
+      }, (error) => {
+        this.loading.dismiss().then(() => {
+          let alert = this.alertCtrl.create({
+            message: error.message,
+            buttons: [{
+              text: 'Ok',
+              role: 'Cancel'
+            }]
+          });
+          alert.present();
+        });
+      });
+      this.loading = this.loadingCtrl.create();
+      this.loading.present();
   }
-
-  // signUpTeacher() {
-  //   this.userservice.signUpTeach(this.emailField, this.passwordField, this.name, this.selectCourse).
-  //     then(authData => {
-  //     //success
-  //     console.log();
-  //     this.navCtrl.setRoot(Main)
-  //   }, error => {
-  //       alert("Error Logging in "+ error.message);
-  //    })
-  //     let loader = this.loading.create({
-  //       dismissOnPageChange: true,
-  //     });
-  //     loader.present();
-  //
-  // }
-  //   // onAddTeacher(form: NgForm){
-  //   //   console.log(form);
-  //   // }
-  // }
 }
 
