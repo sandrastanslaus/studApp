@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams, Platform, ModalController } from 'ionic-angular';
-import { NFC, Ndef } from '@ionic-native/nfc';
-import { TodayAttendance } from '../../pages/today-attendance/today-attendance';
+//import { NFC, Ndef } from '@ionic-native/nfc';
+import { TodayAttendance } from '../today-attendance/today-attendance';
 
 
 @Component({
@@ -9,8 +9,8 @@ import { TodayAttendance } from '../../pages/today-attendance/today-attendance';
   templateUrl: 'attendance.html',
 })
 export class Attendance {
-  data: string[] = [];
-  tags: Ndef[];
+  //data: string[] = [];
+  //tags: Ndef[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public modalCtrl:ModalController) {
   }
 
@@ -24,17 +24,7 @@ export class Attendance {
     });
   }
 
-  getusername () {
-    // NFC.addNdefListener().subscribe(scannedTag => {
-    //   this.tags = scannedTag.tag.ndefMessage;
-    //   console.log(this.tags);
-    //
-    //   //to read more than one value..
-    //   for (let entry of this.tags){
-    //
-    //   }
-    // });
-  }
+
 
 
   //To convert Byte to String

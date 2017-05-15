@@ -4,8 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 //import {HomePage} from "../pages/home/home";
 //import {TeacherRegistration} from "../pages/teacher-registration/teacher-registration";
-import {StudentRegistration} from "../pages/student-registration/student-registration";
-import {StudentLogin} from "../pages/student-login/student-login";
+//import {StudentRegistration} from "../pages/student-registration/student-registration";
+//import {StudentLogin} from "../pages/student-login/student-login";
+import {HomePage} from "../pages/home/home";
 
 
 @Component({
@@ -13,7 +14,7 @@ import {StudentLogin} from "../pages/student-login/student-login";
 
 })
 export class MyApp {
-  rootPage:any = StudentLogin;
+  rootPage:any = HomePage;
 
 
  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
