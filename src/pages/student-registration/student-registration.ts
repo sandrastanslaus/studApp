@@ -3,6 +3,7 @@ import {NavController, NavParams, LoadingController, AlertController, Loading} f
 import { Auth } from "../../providers/auth";
 //import {Attendance} from "../attendance/attendance";
 import {Nfc} from "../nfc/nfc";
+import {StudentLogin} from "../student-login/student-login";
 @Component({
   selector: 'page-student-registration',
   templateUrl: 'student-registration.html',
@@ -36,8 +37,9 @@ export class StudentRegistration {
     this.authProvider.signUpStudent(this.signupData.email, this.signupData.password, this.signupData.studentid)
       .then(() => {
         this.loading.dismiss().then( () => {
-          this.navCtrl.setRoot(Nfc);
+          this.navCtrl.setRoot(StudentLogin);
         });
+
       }, (error) => {
         this.loading.dismiss().then( () => {
           let alert = this.alertCtrl.create({

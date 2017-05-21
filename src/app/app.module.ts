@@ -26,6 +26,7 @@ import {Attendance} from "../pages/attendance/attendance";
 import {TodayAttendance} from "../pages/today-attendance/today-attendance";
 import * as firebase from 'firebase';
 
+
 export const firebaseConfig = {
   apiKey: "AIzaSyDY6UjE-Id-DRuoB_RrgySYqeMtR4TnrC8",
   authDomain: "studapp-c9ec1.firebaseapp.com",
@@ -50,6 +51,7 @@ export const firebaseConfig = {
     Nfc,
     Attendance,
     TodayAttendance
+
   ],
   imports: [
     HttpModule,
@@ -57,7 +59,8 @@ export const firebaseConfig = {
     FormsModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [

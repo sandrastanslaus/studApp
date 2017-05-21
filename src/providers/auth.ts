@@ -21,14 +21,15 @@ export class Auth {
       return firebase.auth().signInWithEmailAndPassword(email, password);
     }
 
-
-    signUpUser (email: string, password: string, course: string, name: string): firebase.Promise<any> {
+//for teacher
+    signUpUser (email: string, password: string, course: string, name: string, title: string): firebase.Promise<any> {
       return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then( newUser => {
           firebase.database().ref('/Teacher').child(newUser.uid)
             .set({ email: email,
                     name: name,
-                    course: course
+                    course: course,
+                    title: title
             })
         })
     }

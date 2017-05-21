@@ -1,15 +1,21 @@
 
 <ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <button ion-button (click)="goback()" icon-left>
+        <ion-icon name='arrow-back'></ion-icon>
+        Back
+      </button>
+    </ion-buttons>
 
-  <ion-navbar>
-    <ion-title>main</ion-title>
-  </ion-navbar>
+    <ion-title>Main</ion-title>
+  </ion-toolbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding class="body">
+<ion-list class="wrapper">
   <ion-item>
     <ion-label>Select Date</ion-label>
   </ion-item>    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event"></ion-datetime>
@@ -21,13 +27,15 @@
     </ion-select>
   </ion-item>
   <button
-    ion-button
+    ion-button color="dark"
     type="submit"
     block>Check Student status</button>
 
   <button
-    ion-button (click)="showConfirm()"
+    ion-button color="dark" (click)="showConfirm()"
     type="submit"
     block>Check Today's Attendance</button>
+
+</ion-list>
 
 </ion-content>

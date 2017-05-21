@@ -8,16 +8,26 @@
 </ion-header>
 
 
-<ion-content padding>
-    <ion-list>
+<ion-content padding class="body">
+
+    <ion-list class="wrapper">
+
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-select [(ngModel)]="signupData.title">
+          <ion-option value="prof">Prof.</ion-option>
+          <ion-option value="mr">Mr.</ion-option>
+          <ion-option value="mrs">Mrs.</ion-option>
+          <ion-option value="miss">Ms.</ion-option>
+        </ion-select>
+      </ion-item>
 
       <ion-item>
         <ion-label floating>Name</ion-label>
         <ion-input type="text"
                    name="teachername"
-                   [(ngModel)]="name"></ion-input>
+                   [(ngModel)]="signupData.name"></ion-input>
       </ion-item>
-
 
       <ion-item>
         <ion-label floating>E-mail</ion-label>
@@ -53,7 +63,7 @@
 
     </ion-list>
   <button
-    ion-button (click)="signup()"
+    ion-button color="dark"  (click)="signup()"
     type="submit"
     block> Register </button>
 </ion-content>

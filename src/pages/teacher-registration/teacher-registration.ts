@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import {NavController, NavParams, LoadingController, AlertController, Loading} from 'ionic-angular';
 //import { AngularFireAuth } from 'angularfire2/auth';
 import {Auth} from "../../providers/auth";
-import {Main} from "../main/main";
+//import {Main} from "../main/main";
+import {TeacherLogin} from "../teacher-login/teacher-login";
 
 
 
@@ -17,7 +18,8 @@ export class TeacherRegistration {
     password: '',
     course: '',
     ConPassword: '',
-    name: ''
+    name: '',
+    title: ''
   }
 
   loading: Loading;
@@ -40,10 +42,10 @@ export class TeacherRegistration {
         return;
     }
     //firebase Signup
-    this.authProvider.signUpUser(this.signupData.email, this.signupData.password, this.signupData.course, this.signupData.name)
+    this.authProvider.signUpUser(this.signupData.email, this.signupData.password, this.signupData.course, this.signupData.name, this.signupData.title)
       .then(() => {
           this.loading.dismiss().then( () => {
-            this.navCtrl.setRoot(Main);
+            this.navCtrl.setRoot(TeacherLogin);
           });
       }, (error) => {
         this.loading.dismiss().then(() => {

@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import {AlertController, NavController, NavParams} from 'ionic-angular';
-import {Nfc} from "../nfc/nfc";
+import {Attendance} from "../attendance/attendance";
+import {HomePage} from "../home/home";
+import {TeacherLogin} from "../teacher-login/teacher-login";
+//import {HomePage} from "../home/home";
+
 
 
 
@@ -13,8 +17,13 @@ export class Main {
   }
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController) {}
+
+
+  goback(){
+    this.navCtrl.setRoot(HomePage);
   }
+
 showConfirm(){
     let confirm = this.alertCtrl.create({
   title: 'Confirmation',
@@ -23,7 +32,7 @@ showConfirm(){
     {
       text: 'Yes, I have confirmed',
       handler: () => {
-        this.navCtrl.push(Nfc);
+        this.navCtrl.push(Attendance);
         console.log('Yes clicked');
       }
     },

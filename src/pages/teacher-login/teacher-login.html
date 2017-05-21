@@ -1,15 +1,16 @@
 
 <ion-header>
-
   <ion-navbar>
     <ion-title> Teacher Login</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
-    <ion-list>
+<ion-content padding class="body">
+  <div class="image">
+    <img src="../assets/teacherIcon.png">
+  </div>
+    <ion-list class="wrapper">
       <ion-item>
         <ion-label floating>E-mail</ion-label>
         <ion-input type="text"
@@ -25,7 +26,7 @@
       </ion-item>
     </ion-list>
   <button
-    ion-button (click)="login()"
+    ion-button color="dark" (click)="login()"
     type="submit"
     block> Login </button>
   <a href="#" (click)="signup()">Signup for an Account</a>

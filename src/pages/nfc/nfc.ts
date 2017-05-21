@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {HomePage} from "../home/home";
+import {NavController} from "ionic-angular";
 //import { NFC} from "@ionic-native/nfc";
 //import { Platform} from 'ionic-angular'
 @Component({
@@ -6,9 +8,13 @@ import { Component } from '@angular/core';
   templateUrl: 'nfc.html',
 })
 export class Nfc {
-  constructor() {
+  constructor(public navCtrl: NavController) {}
+
+    goback(){
+      this.navCtrl.setRoot(HomePage);
+    }
     // platform.ready().then(() => {
-  }
+
 
 
    // });
