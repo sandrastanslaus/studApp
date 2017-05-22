@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import {HomePage} from "../home/home";
+
 import {NavController} from "ionic-angular";
-//import { NFC} from "@ionic-native/nfc";
-//import { Platform} from 'ionic-angular'
+import * as firebase from 'firebase';
+import {HomePage} from "../home/home";
+
+
 @Component({
   selector: 'page-nfc',
   templateUrl: 'nfc.html',
@@ -10,15 +12,9 @@ import {NavController} from "ionic-angular";
 export class Nfc {
   constructor(public navCtrl: NavController) {}
 
-    goback(){
-      this.navCtrl.setRoot(HomePage);
-    }
-    // platform.ready().then(() => {
 
-
-
-   // });
-  //}
-
-
+  logoutUser(): firebase.Promise<void> {
+    this.navCtrl.setRoot(HomePage);
+    return firebase.auth().signOut();
+  }
 }

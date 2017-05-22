@@ -3,5 +3,13 @@ page-main {
     background: mediumturquoise;
   }
 
+  #footer{
+    bottom: 0;
+   // left: 0;
+    margin-bottom: 20px;
+    position: fixed;
+    width: 90%;
+  }
+
 
 }
